@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="input-group">
+  <br/>
+  <input type="search" class="form-control rounded btn-lg" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+  <button onclick="{% url 'lecture:show_title %}" type="button" class="btn btn-outline-primary">search</button>
+  <a href="{% url 'lecture:show_title %}" type="button" class="btn btn-outline-primary">search2</a>
+</div>
+{% if lecture_list %}
+    <h1>아아아아아아아아아아아아아아아아아아아아아아아아아아아</h1>
+    <table class="table">
+        <thead>
+        <tr class="text-center table-dark">
+            <th>번호</th>
+            <th style="width:50%">제목</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for lecture in lecture_list %}
+        <tr>
+            <td>
+                {{ lecture.category }}
+            </td>
+            <td>
+                <a>{{ lecture.name }}</a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <a>Loading</a>
+    <h1>아아아아아아아아아아아아아아아아아아아아아아아아아아아</h1>
+    <h1>아아아아아아아아아아아아아아아아아아아아아아아아아아아</h1>
+{% endif %}
+{% endblock %}
