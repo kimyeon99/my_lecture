@@ -9,13 +9,11 @@ def show_detail(request):
 
 def show_title(request):
     # lecture = get_object_or_404(Lecture, pk=lecture_id)
-    template = loader.get_template('lecture/lecture_list.html')
+    template = loader.get_template('lecture/main.html')
     lecture_list = Lecture.objects.all()
     context = {'lecture_list':lecture_list}
-    return HttpResponse(template.render(context, request))
-    # lecture_list = Lecture.objects
-    # context = {'lecture_list':lecture_list}
-    # return render(request, 'lecture/lecture_list.html', context)
+    # return HttpResponse(template.render(context, request))
+    return render(request, 'lecture/main.html', context)
 
 def showDetail(self):
     print(self.age, self.category, self.name, self.totalCredits, self.time, self.room, self.professor, self.campus,

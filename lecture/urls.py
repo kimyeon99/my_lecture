@@ -8,5 +8,5 @@ app_name = 'lecture'
 urlpatterns = [
     # path('showDetail/', views.show_detail, name='show_detail'),
     path('show/', lecture_views.show_detail, name='show_detail'),
-    path('showTitle/', lecture_views.show_title, name='show_title'),
+    path('show/all', lecture_views.show_title, name='show_title'),
 ]
