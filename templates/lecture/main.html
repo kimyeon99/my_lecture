@@ -1,48 +1,67 @@
 {% extends 'base.html' %}
+
 {% block content %}
 {% load add_filter %}
 
-<div class="input-group">
-  <br/>
-    <div class="col-6">
-            <div class="input-group">
-                <input type="text" id="search_kw" class="form-control" value="{{ kw|default_if_none:'' }}">
-                <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="button" id="btn_search">찾기</button>
-                </div>
+<div class="container px-5">
+  <div class="row">
+    <div class="col">
+         <div class="input-group d-flex justify-content-center" >
+          <br/>
+            <div class="col-6">
+                    <div class="input-group" >
+                        <input type="text" id="search_kw" class="form-control" value="{{ kw|default_if_none:'' }}">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="button" id="btn_search">찾기</button>
+                        </div>
+                    </div>
             </div>
-    </div>
-</div>
-{% if lecture_list %}
-    <table class="table">
-        <thead>
-        <tr class="text-center table-dark">
-            <th>번호</th>
-            <th style="width:50%">제목</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for lecture in lecture_list %}
-        <tr>
-            <td>
-                {{ lecture.category }}
-            </td>
-            <td>
-                <a>{{ lecture.name }}</a>
-            </td>
-        </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <br/>
+        {% if lecture_list %}
+            <table class="table table-bordered" style="margin-left: auto; margin-right: auto;">
+                <thead>
+                <tr class="text-center table-dark">
+                    <th>분류</th>
+                    <th style="width:20%">제목</th>
+                    <th>교수</th>
+<!--                    <th style="width:60%">제목</th>-->
+                </tr>
+                </thead>
+                <tbody>
+                {% for lecture in lecture_list %}
+                <tr>
+                    <td>
+                        {{ lecture.category }}
+                    </td>
+                    <td>
+                        <a>{{ lecture.name }}</a>
+                    </td>
+                    <td>
+                        <a>{{ lecture.professor }}</a>
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <h2>Loading</h2>
+        {% endif %}
 
-{% else %}
-    <h2>Loading</h2>
-{% endif %}
-<form id="searchForm" method="get" action="{% url 'index' %}">
-    <input type="hidden" id="kw" name="kw" value="{{ kw|default_if_none:'' }}">
-    <input type="hidden" id="page" name="page" value="{{ page }}">
-</form>
+    <form id="searchForm" method="get" action="{% url 'index' %}">
+        <input type="hidden" id="kw" name="kw" value="{{ kw|default_if_none:'' }}">
+        <input type="hidden" id="page" name="page" value="{{ page }}">
+    </form>
+     </div>
+    </div>
+    <div class="col-2">
+        {% include "my_lecture.html" %}
+    </div>
+  </div>
+</div>
+
 {% endblock %}
+
+
 
 {% block script %}
 <script type='text/javascript'>

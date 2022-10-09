@@ -1,0 +1,21 @@
+<h1 class="text-center">내 강의</h1>
+ <table class="table table-bordered">
+        <thead>
+        <tr class="text-center table-dark">
+            <th>번호</th>
+            <th>제목</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for lecture in lecture_list %}
+        <tr>
+            <td>
+                {{ lecture.category }}
+            </td>
+            <td>
+                <a>{{ lecture.name }}</a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+ </table>
