@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-e-17mv*8-f!@*v+etilgq&tf^-i5-q7=@!4%t&swpn@(5epzo*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
@@ -35,7 +35,6 @@ LOGOUT_REDIRECT_URL = '/'
 # Application definition
 
 INSTALLED_APPS = [
-    'account',
     'lecture.apps.LectureConfig',
     'common.apps.CommonConfig',
     'django.contrib.admin',
@@ -44,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # 'rest_framework',
 ]
 
 MIDDLEWARE = [
